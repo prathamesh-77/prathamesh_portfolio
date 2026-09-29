@@ -110,6 +110,70 @@ button{font:inherit}
 #project-01,#project-02,#project-03,#project-04{scroll-margin-top:112px}
 @media(max-width:640px){.project-index{gap:6px;margin-bottom:24px}.project-index a{font-size:10px;padding:7px 9px}}
 </style>
+<style>
+/* On phones, show projects as separate cards so the desktop sticky stack
+   does not cover project content or make it difficult to scroll. */
+@media(max-width:640px){
+  .project-stack{display:grid;gap:16px}
+  .project-stack>.project-container,
+  .project-stack>.project-container:nth-child(n){height:auto!important;margin:0!important;position:relative}
+  .project-stack>.project-container .project-card,
+  .project-stack>.project-container:nth-child(n) .project-card{position:relative;top:auto!important;z-index:auto!important;width:100%;height:auto;min-height:0;overflow:hidden;padding:16px;border-radius:24px}
+  .project-top{grid-template-columns:54px minmax(0,1fr);gap:10px;align-items:start}
+  .project-top>div:nth-child(2){min-width:0}
+  .project-top .project-btn{grid-column:2;justify-self:start;margin-top:2px;padding:8px 11px}
+  .project-no{font-size:50px;line-height:.9}
+  .project-title{font-size:18px;line-height:1.15;overflow-wrap:anywhere}
+  .project-main{grid-template-columns:minmax(0,1fr);height:auto;margin-top:14px;gap:12px}
+  .project-main>.visual{height:190px;min-height:190px}
+  .project-detail{min-width:0;padding:17px;border-radius:20px}
+  .project-detail h3{font-size:22px;line-height:1.08}
+  .project-detail p{font-size:14px;line-height:1.5}
+  .detail-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:16px}
+  .detail-grid>div{min-width:0;padding:9px}
+  .detail-grid b{font-size:11px;overflow-wrap:anywhere}
+  .detail-line{display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+  .detail-line strong{text-align:left}
+  .project-copy{position:static;display:block;margin-top:14px}
+  .project-copy p{font-size:13px;line-height:1.45}
+  .tagline{display:block;margin-top:8px;font-size:9px;line-height:1.5}
+
+  /* Reflow the dashboard artwork instead of letting fixed desktop graphics collide. */
+  .hero-art{min-height:340px}
+  .hero-caption{left:14px;right:14px;top:14px;display:grid;gap:4px;font-size:8px;line-height:1.4}
+  .hero-art-bottom{left:14px;right:14px;bottom:14px;align-items:flex-end}
+  .data-scene{transform:scale(.72)}
+  .data-grid{width:440px;height:260px;background-size:32px 32px}
+  .project-main>.visual{height:220px;min-height:220px}
+  .project-chart .dash-strip{top:36px;left:12px;right:12px;gap:5px}
+  .project-chart .dash-strip>div{padding:7px 5px}
+  .project-chart .dash-strip small{font-size:6px;letter-spacing:.06em}
+  .project-chart .dash-strip strong{font-size:11px}
+  .project-chart .big-chart{inset:96px 14px 18px!important;height:auto!important;gap:4px}
+  .project-chart .mini-line{display:none}
+  .automation-visual{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-content:center;gap:8px;padding:16px}
+  .automation-visual .flow-orbit,.automation-visual .flow-arrow{display:none}
+  .automation-visual .flow-stage{position:relative;inset:auto;left:auto;right:auto;top:auto;bottom:auto;min-width:0;padding:8px 9px;border-radius:12px}
+  .automation-visual .flow-stage b{font-size:12px}
+  .automation-visual .flow-stage span{font-size:7px}
+  .automation-visual .automation-code{position:relative;left:auto;top:auto;transform:none;grid-column:1/-1;width:100%;padding:8px 10px;font-size:8px;line-height:1.5}
+  .systems-visual .timeline{inset:48px 12px 72px}
+  .systems-visual .timeline-axis{font-size:6px;letter-spacing:.04em}
+  .systems-visual .timeline-row{height:32px}
+  .systems-visual .timeline-row label{width:72px;font-size:7px;letter-spacing:.04em}
+  .systems-visual .tbar{height:10px}
+  .systems-visual .t1{left:74px;width:20%}
+  .systems-visual .t2{left:calc(74px + 21%);width:24%}
+  .systems-visual .t3{left:calc(74px + 47%);width:17%}
+  .systems-visual .t4{left:74px;width:25%}
+  .systems-visual .t5{left:calc(74px + 26%);width:20%}
+  .systems-visual .t6{left:calc(74px + 47%);width:17%}
+  .systems-visual .t7{left:74px;width:34%}
+  .systems-visual .t8{left:calc(74px + 36%);width:27%}
+  .systems-visual .systems-badges{left:12px;right:12px;bottom:12px;gap:5px}
+  .systems-visual .systems-badges span{padding:5px 7px;font-size:6px;letter-spacing:.04em}
+}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
