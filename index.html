@@ -171,31 +171,32 @@ button{font:inherit}
   .systems-visual .systems-badges{display:none}
 }
 
-/* Mobile data visuals use a compact vertical layout so every panel stays in frame. */
+/* Mobile data visuals retain the horizontal marquee layout while fitting inside each panel. */
 @media(max-width:640px){
   .hero h1{font-size:clamp(34px,12vw,48px);white-space:nowrap;overflow-wrap:normal;letter-spacing:-.06em;line-height:.96}
-  .marquee{overflow:hidden;padding:58px 0 70px}
-  .marquee-head{align-items:flex-start;gap:12px;flex-direction:column}
-  .marquee-title{font-size:clamp(27px,8.6vw,36px);line-height:.94}
-  .marquee .marquee-row{width:min(92vw,560px);margin:0 auto 12px;overflow:visible}
-  .marquee .track{display:grid;grid-template-columns:minmax(0,1fr);width:100%;gap:12px;transform:none!important;will-change:auto}
-  .marquee .tile{width:100%;max-width:560px;height:196px;box-sizing:border-box;border-radius:23px}
-  #trackA .tile:nth-child(n+5){display:none}
-  #trackB,.marquee-row-secondary{display:none}
-  .code{inset:10px 10px 36px;padding:10px 9px;font-size:clamp(8px,2.65vw,10px);line-height:1.32;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;box-sizing:border-box;max-width:100%}
+  .marquee{overflow:hidden;padding:70px 0 90px}
+  .marquee-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(110px,.85fr);align-items:end;gap:12px}
+  .marquee-head>div{min-width:0}
+  .marquee-head>.section-tag{font-size:clamp(9px,2.5vw,11px);line-height:1.6;letter-spacing:.16em;text-align:right}
+  .marquee-title{font-size:clamp(28px,8.2vw,36px);line-height:.92}
+  .marquee .marquee-row{width:100%;margin:0 0 12px;overflow:hidden}
+  .marquee .track{display:flex;gap:12px;width:max-content;will-change:transform}
+  .marquee .tile{width:min(78vw,320px);height:178px;box-sizing:border-box;border-radius:23px}
+  .code{inset:10px 10px 36px;padding:9px 8px;font-size:clamp(8px,2.45vw,9px);line-height:1.32;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;box-sizing:border-box;max-width:100%}
   .code-line{white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word}
   .code-line:before{width:14px}
-  .tile-label{left:11px;right:11px;bottom:10px;gap:8px;font-size:8px;letter-spacing:.07em}
+  .tile-label{left:11px;right:11px;bottom:9px;gap:8px;font-size:8px;letter-spacing:.07em}
   .tile-label span{min-width:0;max-width:48%;text-align:right;overflow-wrap:anywhere}
   .dashboard,.tableau{inset:10px 10px 36px}
-  .dashboard{padding:9px}
+  .dashboard{padding:8px}
   .dash-top{gap:5px}
-  .kpi{padding:6px}
-  .kpi strong{font-size:15px}
-  .chart{height:72px}
-  .tableau{padding:12px}
-  .tgrid{gap:6px;margin-top:10px}
-  .tcard{height:58px;padding:7px}
+  .kpi{padding:5px}
+  .kpi strong{font-size:14px;margin-top:2px}
+  .chart{height:58px;margin-top:6px}
+  .tableau{padding:10px}
+  .tgrid{gap:5px;margin-top:7px}
+  .tcard{height:40px;padding:5px}
+  .spark{height:22px}
 }
 @media(max-width:360px){
   .hero h1{font-size:clamp(30px,11.5vw,40px)}
@@ -302,7 +303,7 @@ const types=['dashboard','python','sql','bi','flow','model','dashboard','python'
 function fillTrack(id,reverse=false){const el=document.getElementById(id);el.innerHTML=types.map(t=>`<div class="tile">${tileTemplates[t]}</div>`).join(''); if(reverse) el.style.transform='translateX(-20px)'}
 fillTrack('trackA'); fillTrack('trackB',true);
 let lastY=window.scrollY; let raf=0;
-function moveMarquee(){const a=document.getElementById('trackA'), b=document.getElementById('trackB'); if(window.matchMedia('(max-width:640px)').matches){a.style.transform='none'; b.style.transform='none'; lastY=window.scrollY; raf=0; return} const d=window.scrollY-lastY; lastY=window.scrollY; const av=parseFloat(a.dataset.x||'0')+d*.35; const bv=parseFloat(b.dataset.x||'0')-d*.28; a.dataset.x=av; b.dataset.x=bv; a.style.transform=`translate3d(${(-av%2200)-150}px,0,0)`; b.style.transform=`translate3d(${(-bv%2200)+40}px,0,0)`; raf=0}
+function moveMarquee(){const d=window.scrollY-lastY; lastY=window.scrollY; const a=document.getElementById('trackA'), b=document.getElementById('trackB'); const av=parseFloat(a.dataset.x||'0')+d*.35; const bv=parseFloat(b.dataset.x||'0')-d*.28; a.dataset.x=av; b.dataset.x=bv; a.style.transform=`translate3d(${(-av%2200)-150}px,0,0)`; b.style.transform=`translate3d(${(-bv%2200)+40}px,0,0)`; raf=0}
 window.addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(moveMarquee)},{passive:true});
 const obs=new IntersectionObserver((entries)=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target)}}),{threshold:0.12});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
