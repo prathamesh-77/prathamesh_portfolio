@@ -7,7 +7,6 @@
 <meta name="description" content="Prathamesh Dodia is a data analyst with 3 years at YouGov: Power BI dashboards, automated reporting, and internal systems and HR platform migrations delivered end to end." />
 <meta name="author" content="Prathamesh Dodia" />
 <meta name="theme-color" content="#F4F6F8" />
-<script>(function(){var t="light";try{t=localStorage.getItem("theme")||"light"}catch(e){}document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");if(t==="dark"){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#0C1218")}})();</script>
 <link rel="canonical" href="https://prathamesh-77.github.io/prathamesh_portfolio/" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Prathamesh Dodia — Data Analyst &amp; Project Delivery" />
@@ -27,13 +26,6 @@
   --accent:#1F46D1; --accent-soft:#E7ECFB; --accent-line:#B7C6F2;
   --display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
   --text:'Instrument Sans','Segoe UI',system-ui,sans-serif;
-}
-:root[data-theme="dark"]{
-  color-scheme:dark;
-  --paper:#0C1218; --panel:#131B24; --ink:#E9EFF4; --muted:#A3B3C0; --rule:#25313D;
-  --on-ink:#0C1218; --bar:rgba(12,18,24,.9); --shadow:0 -10px 34px rgba(0,0,0,.45),0 1px 0 #25313D;
-  --block:#16212C; --block-ink:#E9EFF4; --block-muted:#A3B3C0;
-  --accent:#8CA8FF; --accent-soft:#18233F; --accent-line:#33457A;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;background:var(--paper)}
@@ -57,14 +49,6 @@ a{color:inherit}
 .btn:hover{background:var(--ink);color:var(--on-ink)}
 .btn.solid{background:var(--ink);color:var(--on-ink)}
 .btn.solid:hover{background:var(--accent);border-color:var(--accent)}
-
-.theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:8px;border:1.5px solid var(--rule);background:var(--panel);color:var(--ink);cursor:pointer;transition:border-color .18s,background .18s}
-.theme-toggle:hover{border-color:var(--ink)}
-.theme-toggle svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-.theme-toggle .sun{display:none}
-:root[data-theme="dark"] .theme-toggle .sun{display:block}
-:root[data-theme="dark"] .theme-toggle .moon{display:none}
-body,.bar,.glance,.case,.pill,.contact .box{transition:background-color .25s,border-color .25s,color .25s}
 
 /* hero */
 .hero{position:relative;padding:72px 0 88px;overflow:hidden}
@@ -99,8 +83,6 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
   box-shadow:var(--shadow)}
 .case{--on-c:#FFFFFF}
 .case.delivery{--c:#0B7A6B;--c-soft:#E3F3F0;--c-line:#A9D8D0}
-:root[data-theme="dark"] .case{--c:#8CA8FF;--c-soft:#16203B;--c-line:#30427A;--on-c:#0C1218}
-:root[data-theme="dark"] .case.delivery{--c:#45D1BB;--c-soft:#0F2824;--c-line:#1F5A50;--on-c:#0C1218}
 .stack-on .case{position:sticky;top:calc(var(--hdr) + 14px + var(--i)*var(--step));z-index:calc(var(--i) + 1)}
 .tab{display:flex;justify-content:space-between;align-items:center;height:var(--step);padding:0 22px;background:var(--c-soft);border-bottom:1px solid var(--c-line);font-size:14px;font-weight:600;color:var(--ink)}
 .tab-group{display:inline-flex;align-items:center;gap:9px}
@@ -125,6 +107,7 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
 .case-main h4{font-family:var(--display);font-weight:800;font-size:clamp(24px,2.5vw,32px);line-height:1.08;letter-spacing:-.025em}
 .role{margin-top:8px;font-weight:600;color:var(--c);font-size:15px}
 .summary{margin-top:12px;max-width:44em;font-size:16px;line-height:1.55}
+.summary-short{display:none}
 .prdl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 26px;margin-top:14px}
 .prdl>div{padding:9px 0 10px;border-top:1px solid var(--rule)}
 .prdl dt{font-size:13px;font-weight:600;color:var(--c);margin-bottom:2px}
@@ -187,8 +170,7 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
   .mark{font-size:17px}
   .nav{gap:14px;font-size:14px}
   .nav a.btn{padding:8px 14px}
-  .theme-toggle{width:36px;height:36px}
-  .nav a:not(.btn){display:none}
+  .nav a.hide-sm{display:none}
   .section{padding-top:64px}
   .prdl{grid-template-columns:1fr 1fr;gap:0 16px}
   .prdl dd{font-size:15px}
@@ -197,32 +179,37 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
   .viz{padding:16px 18px;gap:14px}
   .case-main h4{font-size:22px}
   .summary{font-size:15.5px}
-  .stack{--step:28px}
+  .stack{--step:22px}
+  .tab{font-size:12px;padding:0 14px}
   .stack-on .viz .flow,.stack-on .viz .tools{display:none}
-  .stack-on .viz{padding:12px 18px}
+  .stack-on .summary{display:none}
+  .stack-on .summary-short{display:block;margin-top:6px;font-size:14.5px;line-height:1.4}
+  .stack-on .viz{padding:8px 16px;gap:0}
   .stack-on .bigfig{display:flex;align-items:baseline;gap:12px;flex:1 1 100%}
-  .stack-on .bigfig span{margin-top:0;font-size:14px}
-  .stack-on .case-main{padding:16px 18px 14px}
-  .stack-on .role{margin-top:4px}
-  .stack-on .summary{margin-top:8px;font-size:15px;line-height:1.5}
-  .stack-on .prdl{margin-top:10px}
-  .stack-on .prdl>div{padding:7px 0 8px}
+  .stack-on .bigfig b{font-size:32px;white-space:nowrap}
+  .stack-on .bigfig span{margin-top:0;font-size:13.5px;max-width:none}
+  .stack-on .case-main{padding:12px 16px 10px}
+  .stack-on .case-main h4{font-size:19px;line-height:1.1}
+  .stack-on .role{margin-top:4px;font-size:14px}
+  .stack-on .prdl{margin-top:8px;gap:0 14px}
+  .stack-on .prdl>div{padding:5px 0 6px}
+  .stack-on .prdl dt{font-size:12px}
+  .stack-on .prdl dd{font-size:14px;line-height:1.3}
   .glance{padding:6px 18px 10px}
   .glance th{width:30%}
   .foot{flex-direction:column}
 }
 @media(max-width:380px){
+  .nav a:not(.btn){display:none}
   .mark{font-size:15px}
   .nav{gap:10px}
   .nav a.btn{padding:7px 11px;font-size:14px}
-  .theme-toggle{width:34px;height:34px}
   .bar .wrap{gap:10px}
 }
 @media(max-width:340px){
   .mark{font-size:14px;letter-spacing:-.02em}
   .nav{gap:8px}
   .nav a.btn{padding:6px 9px;font-size:13px}
-  .theme-toggle{width:32px;height:32px}
 }
 </style>
 </head>
@@ -236,7 +223,6 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
       <a class="hide-sm" href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a class="hide-sm" href="#contact">Contact</a>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme" title="Switch theme"><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"/></svg><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg></button>
       <a class="btn" id="resumeNav" href="#">Resume</a>
     </nav>
   </div>
@@ -306,6 +292,7 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
             <h4>Power BI financial and operational reporting</h4>
             <p class="role">Data Analyst · YouGov</p>
             <p class="summary">Built and maintain 3 interactive Power BI dashboards (DAX, Power Query, data modelling) that bring financial and operational metrics from 3 separate sources into one view for Finance, HR and senior leadership.</p>
+            <p class="summary-short">Power BI dashboards that bring 3 sources into one view for Finance, HR and leadership.</p>
             <dl class="prdl"><div><dt>Problem</dt><dd>Metrics spread across 3 sources</dd></div><div><dt>Decision</dt><dd>Shared dashboards on agreed KPIs</dd></div><div><dt>Result</dt><dd>3 dashboards used by Finance and HR</dd></div><div><dt>Learning</dt><dd>Agree KPI definitions first</dd></div></dl>
           </div>
         </div>
@@ -322,6 +309,7 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
             <h4>SQL and Python reporting automation</h4>
             <p class="role">Data Analyst · YouGov</p>
             <p class="summary">Teams sent separate reports, and combining them for distribution took nearly a week of manual work. I automated 7 recurring reporting workflows with Snowflake, SQL, Python and Excel, cutting manual data preparation by 40% against the previous process.</p>
+            <p class="summary-short">Automated 7 recurring reporting workflows, replacing nearly a week of manual consolidation.</p>
             <dl class="prdl"><div><dt>Problem</dt><dd>Manual consolidation took nearly a week</dd></div><div><dt>Decision</dt><dd>Automate extract, transform and validate</dd></div><div><dt>Result</dt><dd>7 workflows; 40% less prep time</dd></div><div><dt>Learning</dt><dd>Validate before distribution</dd></div></dl>
           </div>
         </div>
@@ -338,6 +326,7 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
             <h4>Project allocation system</h4>
             <p class="role">Delivery owner · YouGov</p>
             <p class="summary">Scoped, designed and delivered an internal allocation and resource-planning system from scratch: stakeholder interviews, requirements, workflow mapping, build, UAT and rollout. It replaced Excel trackers and email.</p>
+            <p class="summary-short">Built from scratch, from interviews to rollout. It replaced Excel trackers and email.</p>
             <dl class="prdl"><div><dt>Problem</dt><dd>Allocation ran on Excel and email</dd></div><div><dt>Decision</dt><dd>One app for records and evidence</dd></div><div><dt>Result</dt><dd>Used by researcher and finance teams</dd></div><div><dt>Learning</dt><dd>Design around team handoffs</dd></div></dl>
           </div>
         </div>
@@ -354,6 +343,7 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
             <h4>Timesheet application in Microsoft Teams</h4>
             <p class="role">Delivery owner · YouGov</p>
             <p class="summary">Owned end-to-end delivery of a replacement timesheet application inside Microsoft Teams: requirements, workflow design, build, UAT and rollout. I redesigned submission and added a manager dashboard for team timesheet records.</p>
+            <p class="summary-short">Owned a Teams timesheet app from requirements to rollout, with a manager dashboard.</p>
             <dl class="prdl"><div><dt>Problem</dt><dd>Hard-to-use previous tool</dd></div><div><dt>Decision</dt><dd>Rebuild in Teams with a manager view</dd></div><div><dt>Result</dt><dd>Used by all YouGov employees</dd></div><div><dt>Learning</dt><dd>Test common tasks with real users</dd></div></dl>
           </div>
         </div>
@@ -370,6 +360,7 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
             <h4>Employee-data migration to Greenhouse ATS</h4>
             <p class="role">Migration lead · YouGov</p>
             <p class="summary">Led the migration of all YouGov employee data from legacy HR platforms to Greenhouse ATS. The source data had errors and corrupted records, so I owned mapping, cleansing and validation before cutover.</p>
+            <p class="summary-short">Led mapping, cleansing and validation of all employee data before cutover.</p>
             <dl class="prdl"><div><dt>Problem</dt><dd>Errors and corrupted source records</dd></div><div><dt>Decision</dt><dd>Map, cleanse and validate first</dd></div><div><dt>Result</dt><dd>Cutover completed with minimal defects</dd></div><div><dt>Learning</dt><dd>Surface data exceptions and owners early</dd></div></dl>
           </div>
         </div>
@@ -386,6 +377,7 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
             <h4>Workday HCM migration across all markets</h4>
             <p class="role">Delivery support · YouGov</p>
             <p class="summary">Supported the migration of all YouGov employees from Greenhouse to Workday HCM across every market: data mapping, system configuration, UAT design and execution, and go-live support with HR, IT and business stakeholders.</p>
+            <p class="summary-short">Supported configuration, UAT and go-live for all employees across every market.</p>
             <dl class="prdl"><div><dt>Problem</dt><dd>Move all employees to a new HCM platform</dd></div><div><dt>Decision</dt><dd>Support configuration, UAT and readiness</dd></div><div><dt>Result</dt><dd>Delivered on time across all markets</dd></div><div><dt>Learning</dt><dd>Plan market UAT and sign-off early</dd></div></dl>
           </div>
         </div>
@@ -418,40 +410,35 @@ const resumeBase64='JVBERi0xLjMKJeLjz9MKMSAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovUGFn
 function wireResume(id){const a=document.getElementById(id); if(!a) return; a.href='data:application/pdf;base64,'+resumeBase64; a.download='Prathamesh_Dodia_Resume.pdf';}
 ['resumeNav','resumeHero','resumeFooter'].forEach(wireResume);
 
-// Theme toggle (remembers the choice on this device)
-(function(){
-  const root=document.documentElement, btn=document.getElementById('themeToggle');
-  const meta=document.querySelector('meta[name="theme-color"]');
-  function sync(){
-    const dark=root.getAttribute('data-theme')==='dark';
-    btn.setAttribute('aria-label',dark?'Switch to light theme':'Switch to dark theme');
-    if(meta) meta.setAttribute('content',dark?'#0C1218':'#F4F6F8');
-  }
-  btn.addEventListener('click',()=>{
-    const next=root.getAttribute('data-theme')==='dark'?'light':'dark';
-    root.setAttribute('data-theme',next);
-    try{localStorage.setItem('theme',next)}catch(e){}
-    sync();
-  });
-  sync();
-})();
-
-// Sticky card stack: only switch it on when every card fits in the viewport,
-// otherwise a tall card could be cut off while it is stuck.
+// Sticky card stack. It is switched on only when every card fits the *smallest*
+// viewport height (so it cannot be cut off), and it is decided once per width, never
+// while scrolling, because phone address bars change the viewport height as you scroll.
 (function(){
   const root=document.documentElement, stack=document.getElementById('stack');
   if(!stack) return;
   const cards=[...stack.querySelectorAll('.case')];
+  const probe=document.createElement('div');
+  probe.style.cssText='position:fixed;top:0;left:0;width:0;height:100svh;visibility:hidden;pointer-events:none';
+  document.body.appendChild(probe);
+  function smallestHeight(){
+    const svh=probe.offsetHeight;
+    return svh>0?Math.min(svh,window.innerHeight):window.innerHeight;
+  }
+  let lastWidth=-1;
   function update(){
     root.classList.add('stack-on');
     const cs=getComputedStyle(stack);
     const hdr=parseFloat(cs.getPropertyValue('--hdr'))||68, step=parseFloat(cs.getPropertyValue('--step'))||30;
-    const fits=cards.every((c,i)=>hdr+14+i*step+c.offsetHeight<=window.innerHeight-12);
+    const h=smallestHeight();
+    const fits=cards.every((c,i)=>hdr+14+i*step+c.offsetHeight<=h-12);
     if(!fits) root.classList.remove('stack-on');
+    lastWidth=window.innerWidth;
   }
-  let t; window.addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(update,120)});
-  window.addEventListener('load',update); update();
-  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(update);
+  window.addEventListener('resize',()=>{ if(window.innerWidth!==lastWidth) update(); });
+  window.addEventListener('orientationchange',()=>setTimeout(update,250));
+  update();
+  window.addEventListener('load',update);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>{ if(window.scrollY<200) update(); });
 })();
 </script>
 </body>
