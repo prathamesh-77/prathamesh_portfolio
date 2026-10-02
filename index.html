@@ -179,11 +179,17 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
   .viz{padding:16px 18px;gap:14px}
   .case-main h4{font-size:22px}
   .summary{font-size:15.5px}
-  .stack{--step:22px}
+  .stack{--step:20px}
   .tab{font-size:12px;padding:0 14px}
-  .stack-on .viz .flow,.stack-on .viz .tools{display:none}
+  .stack-on .flow{flex-direction:row;flex-wrap:wrap;align-items:center;flex:1 1 100%;margin-top:6px;row-gap:4px}
+  .stack-on .flow li{padding:0;display:inline-flex;align-items:center}
+  .stack-on .flow li::after{display:none}
+  .stack-on .flow li:first-child::before{display:none}
+  .stack-on .flow li+li::before{display:inline;content:"→";position:static;width:auto;height:auto;background:none;color:var(--c);font-weight:700;font-size:13px;padding:0 5px}
+  .stack-on .pill{padding:3px 8px;font-size:12.5px;border-radius:6px}
+  .stack-on .viz .tools{display:block;flex:1 1 100%;margin-top:6px;padding-top:5px;font-size:12px;line-height:1.35}
+  .stack-on .viz .tools span{display:inline;margin:0 6px 0 0}
   .stack-on .summary{display:none}
-  .stack-on .summary-short{display:block;margin-top:6px;font-size:14.5px;line-height:1.4}
   .stack-on .viz{padding:8px 16px;gap:0}
   .stack-on .bigfig{display:flex;align-items:baseline;gap:12px;flex:1 1 100%}
   .stack-on .bigfig b{font-size:32px;white-space:nowrap}
@@ -194,7 +200,7 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
   .stack-on .prdl{margin-top:8px;gap:0 14px}
   .stack-on .prdl>div{padding:5px 0 6px}
   .stack-on .prdl dt{font-size:12px}
-  .stack-on .prdl dd{font-size:14px;line-height:1.3}
+  .stack-on .prdl dd{font-size:13.5px;line-height:1.28}
   .glance{padding:6px 18px 10px}
   .glance th{width:30%}
   .foot{flex-direction:column}
@@ -285,7 +291,7 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
         <div class="case-grid">
           <aside class="viz" aria-label="Illustrative summary">
             <div class="bigfig"><b>3</b><span>dashboards for Finance and HR</span></div>
-            <ol class="flow" aria-label="Illustrative workflow"><li><span class="pill">3 separate sources</span></li><li><span class="pill">Power Query and DAX model</span></li><li><span class="pill">3 dashboards for Finance, HR and leadership</span></li></ol>
+            <ol class="flow" aria-label="Illustrative workflow"><li><span class="pill">3 separate sources</span></li><li><span class="pill">Power Query and DAX model</span></li><li><span class="pill">3 dashboards for Finance, HR, leadership</span></li></ol>
             <p class="tools"><span>Tools and methods</span>Power BI, DAX, Power Query, data modelling</p>
           </aside>
           <div class="case-main">
@@ -336,7 +342,7 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
         <div class="case-grid">
           <aside class="viz" aria-label="Illustrative summary">
             <div class="bigfig"><b>All</b><span>employees on the standard timesheet system</span></div>
-            <ol class="flow" aria-label="Illustrative workflow"><li><span class="pill">Previous tool</span></li><li><span class="pill">New app in Teams</span></li><li><span class="pill">All employees; managers see team records</span></li></ol>
+            <ol class="flow" aria-label="Illustrative workflow"><li><span class="pill">Previous tool</span></li><li><span class="pill">New app in Teams</span></li><li><span class="pill">All employees and managers</span></li></ol>
             <p class="tools"><span>Tools and methods</span>Requirements, workflow redesign, UAT, rollout</p>
           </aside>
           <div class="case-main">
@@ -370,7 +376,7 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
         <div class="case-grid">
           <aside class="viz" aria-label="Illustrative summary">
             <div class="bigfig"><b>On time</b><span>go-live across all markets</span></div>
-            <ol class="flow" aria-label="Illustrative workflow"><li><span class="pill">Greenhouse</span></li><li><span class="pill">Configuration, UAT and readiness by market</span></li><li><span class="pill">Workday HCM go-live</span></li></ol>
+            <ol class="flow" aria-label="Illustrative workflow"><li><span class="pill">Greenhouse</span></li><li><span class="pill">UAT and readiness by market</span></li><li><span class="pill">Workday HCM go-live</span></li></ol>
             <p class="tools"><span>Tools and methods</span>Workday HCM, UAT, market readiness, go-live</p>
           </aside>
           <div class="case-main">
