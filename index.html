@@ -51,6 +51,8 @@ a{color:inherit}
 .btn.solid:hover{background:var(--accent);border-color:var(--accent)}
 
 /* hero */
+.open-to{margin-top:22px;display:flex;align-items:center;gap:10px;font-size:15px;color:var(--muted)}
+.open-to .live{width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none}
 .hero{position:relative;padding:72px 0 88px;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--rule) 1px,transparent 1px),linear-gradient(90deg,var(--rule) 1px,transparent 1px);background-size:56px 56px;opacity:.55;-webkit-mask-image:radial-gradient(ellipse 70% 80% at 78% 30%,#000,transparent 72%);mask-image:radial-gradient(ellipse 70% 80% at 78% 30%,#000,transparent 72%);pointer-events:none}
 .hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:center}
@@ -115,6 +117,24 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
 .tools{padding-top:12px;border-top:1px solid var(--c-line);font-size:13.5px;line-height:1.45;color:var(--muted)}
 .tools span{display:block;font-weight:600;color:var(--ink);margin-bottom:1px}
 
+/* sample work */
+.sample-card{display:grid;grid-template-columns:minmax(260px,.82fr) minmax(0,1.5fr);background:var(--panel);border:1px solid var(--rule);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+.sample-side{padding:28px 26px;background:var(--accent-soft);border-right:1px solid var(--accent-line);display:flex;flex-direction:column;gap:14px}
+.sample-tag{font-size:14px;font-weight:600;color:var(--accent)}
+.sample-side h3{font-family:var(--display);font-weight:800;font-size:clamp(24px,2.4vw,30px);line-height:1.08;letter-spacing:-.025em}
+.sample-tools{font-size:14px;color:var(--muted)}
+.sample-tools span{display:block;font-weight:600;color:var(--ink);font-size:13px}
+.steps{list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.steps li{counter-increment:s;display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--accent-line);border-radius:8px;padding:8px 12px;font-size:14px;line-height:1.3}
+.steps li::before{content:counter(s);flex:none;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center}
+.sample-main{padding:28px 32px}
+.sample-main p{max-width:44em}
+.sample-list{margin:16px 0 0;padding:0;list-style:none}
+.sample-list li{padding:10px 0;border-top:1px solid var(--rule);font-size:15.5px}
+.sample-list b{color:var(--accent);font-weight:600;margin-right:4px}
+.sample-list code{font-size:.92em;background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:0 5px}
+.sample-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+
 /* skills + about */
 .skills{display:grid;gap:0}
 .skills>div{display:grid;grid-template-columns:minmax(220px,300px) 1fr;gap:8px 56px;padding:18px 0;border-top:1px solid var(--rule)}
@@ -153,6 +173,8 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
   .hero .wrap{grid-template-columns:1fr;gap:40px}
   .section>.wrap>header,.skills>div,.about-grid{grid-template-columns:1fr}
   .case-grid{grid-template-columns:1fr}
+  .sample-card{grid-template-columns:1fr}
+  .sample-side{border-right:0;border-bottom:1px solid var(--accent-line)}
   .viz{border-right:0;border-bottom:1px solid var(--c-line);padding:20px 22px;flex-direction:row;align-items:flex-start;gap:20px;flex-wrap:wrap}
   .bigfig{flex:1 1 180px}
   .flow{flex:1 1 220px}
@@ -167,6 +189,8 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
   .wrap{width:calc(100% - 32px)}
   .bar .wrap{height:60px}
   .stack{--hdr:60px}
+  .sample-side{padding:20px 18px}
+  .sample-main{padding:20px 18px}
   .mark{font-size:17px}
   .nav{gap:14px;font-size:14px}
   .nav a.btn{padding:8px 14px}
@@ -228,6 +252,7 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
       <a class="hide-sm" href="#about">About</a>
       <a class="hide-sm" href="#skills">Skills</a>
       <a href="#projects">Projects</a>
+      <a class="hide-sm" href="#sample">Sample work</a>
       <a class="hide-sm" href="#contact">Contact</a>
       <a class="btn" id="resumeNav" href="#">Resume</a>
     </nav>
@@ -244,10 +269,11 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
         <a class="btn solid" href="#projects">See projects</a>
         <a class="btn" id="resumeHero" href="#">Download resume</a>
       </div>
+      <p class="open-to"><i class="live"></i>Open to data analyst and project management or coordination roles</p>
     </div>
     <div class="glance">
       <h2>At a glance</h2>
-      <table><caption class="sr" style="position:absolute;left:-9999px">Key figures from my work at YouGov</caption><tbody><tr><th scope="row"><span class="fig">3+</span></th><td><strong>Years at YouGov</strong><span>Data Analyst since Aug 2023</span></td></tr><tr><th scope="row"><span class="fig">7</span></th><td><strong>Reporting workflows automated</strong><span>SQL, Python and Excel on Snowflake</span></td></tr><tr><th scope="row"><span class="fig">40%</span></th><td><strong>Less manual data preparation</strong><span>Against the previous manual process</span></td></tr><tr><th scope="row"><span class="fig">3</span></th><td><strong>Power BI dashboards</strong><span>Used by Finance, HR and leadership</span></td></tr><tr><th scope="row"><span class="fig">2</span></th><td><strong>HR platform migrations</strong><span>Greenhouse ATS (led), Workday HCM (supported)</span></td></tr><tr><th scope="row"><span class="fig">2</span></th><td><strong>Internal apps built from scratch</strong><span>Project allocation, timesheet in Teams</span></td></tr></tbody></table>
+      <table><caption class="sr" style="position:absolute;left:-9999px">Key figures from my work at YouGov</caption><tbody><tr><th scope="row"><span class="fig">3+</span></th><td><strong>Years at YouGov</strong><span>Data Analyst since Aug 2023</span></td></tr><tr><th scope="row"><span class="fig">7</span></th><td><strong>Reporting workflows automated</strong><span>SQL, Python and Excel on Snowflake</span></td></tr><tr><th scope="row"><span class="fig">2</span></th><td><strong>HR platform migrations</strong><span>Greenhouse ATS (led), Workday HCM (supported)</span></td></tr><tr><th scope="row"><span class="fig">2</span></th><td><strong>Internal apps built from scratch</strong><span>Project allocation, timesheet in Teams</span></td></tr></tbody></table>
     </div>
   </div>
 </section>
@@ -307,16 +333,16 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
         <div class="tab"><span class="tab-group"><i class="dot"></i>Analytics</span><span class="tab-count">Project 2 of 6</span></div>
         <div class="case-grid">
           <aside class="viz" aria-label="Illustrative summary">
-            <div class="bigfig"><b>40%</b><span>less manual data preparation</span></div>
+            <div class="bigfig"><b>7</b><span>recurring reporting workflows automated</span></div>
             <ol class="flow" aria-label="Illustrative workflow"><li><span class="pill">Snowflake</span></li><li><span class="pill">SQL transform</span></li><li><span class="pill">Python validate</span></li><li><span class="pill">One consolidated report</span></li></ol>
             <p class="tools"><span>Tools and methods</span>SQL, Python, pandas, Excel, Snowflake</p>
           </aside>
           <div class="case-main">
             <h4>SQL and Python reporting automation</h4>
             <p class="role">Data Analyst · YouGov</p>
-            <p class="summary">Teams sent separate reports, and combining them for distribution took nearly a week of manual work. I automated 7 recurring reporting workflows with Snowflake, SQL, Python and Excel, cutting manual data preparation by 40% against the previous process.</p>
-            <p class="summary-short">Automated 7 recurring reporting workflows, replacing nearly a week of manual consolidation.</p>
-            <dl class="prdl"><div><dt>Problem</dt><dd>Manual consolidation took nearly a week</dd></div><div><dt>Decision</dt><dd>Automate extract, transform and validate</dd></div><div><dt>Result</dt><dd>7 workflows; 40% less prep time</dd></div><div><dt>Learning</dt><dd>Validate before distribution</dd></div></dl>
+            <p class="summary">Replaced a nearly week-long process of combining reports from multiple teams with one consolidated report. I automated 7 recurring reporting workflows with Snowflake, SQL, Python and Excel.</p>
+            <p class="summary-short">Replaced a nearly week-long process of combining team reports with one consolidated report.</p>
+            <dl class="prdl"><div><dt>Problem</dt><dd>Combining team reports took nearly a week</dd></div><div><dt>Decision</dt><dd>Automate extract, transform and validate</dd></div><div><dt>Result</dt><dd>One consolidated report; 7 workflows automated</dd></div><div><dt>Learning</dt><dd>Validate before distribution</dd></div></dl>
           </div>
         </div>
       </article>
@@ -324,16 +350,16 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
         <div class="tab"><span class="tab-group"><i class="dot"></i>Delivery</span><span class="tab-count">Project 3 of 6</span></div>
         <div class="case-grid">
           <aside class="viz" aria-label="Illustrative summary">
-            <div class="bigfig"><b>1</b><span>app replacing Excel and email</span></div>
-            <ol class="flow" aria-label="Illustrative workflow"><li><span class="pill">Excel trackers and email</span></li><li><span class="pill">One allocation app</span></li><li><span class="pill">Researcher and finance teams</span></li></ol>
+            <div class="bigfig"><b>3</b><span>teams use one app instead of Excel and email</span></div>
+            <ol class="flow" aria-label="Illustrative workflow"><li><span class="pill">Excel trackers and email</span></li><li><span class="pill">One allocation app</span></li><li><span class="pill">Finance, researcher and data processing teams</span></li></ol>
             <p class="tools"><span>Tools and methods</span>Requirements, workflow design, UAT, rollout</p>
           </aside>
           <div class="case-main">
             <h4>Project allocation system</h4>
             <p class="role">Delivery owner · YouGov</p>
             <p class="summary">Scoped, designed and delivered an internal allocation and resource-planning system from scratch: stakeholder interviews, requirements, workflow mapping, build, UAT and rollout. It replaced Excel trackers and email.</p>
-            <p class="summary-short">Built from scratch, from interviews to rollout. It replaced Excel trackers and email.</p>
-            <dl class="prdl"><div><dt>Problem</dt><dd>Allocation ran on Excel and email</dd></div><div><dt>Decision</dt><dd>One app for records and evidence</dd></div><div><dt>Result</dt><dd>Used by researcher and finance teams</dd></div><div><dt>Learning</dt><dd>Design around team handoffs</dd></div></dl>
+            <p class="summary-short">Built from scratch, from interviews to rollout. Used by finance, researcher and data processing teams.</p>
+            <dl class="prdl"><div><dt>Problem</dt><dd>Allocation ran on Excel and email</dd></div><div><dt>Decision</dt><dd>One app for records and evidence</dd></div><div><dt>Result</dt><dd>Used by three teams: finance, researchers and data processing</dd></div><div><dt>Learning</dt><dd>Design around team handoffs</dd></div></dl>
           </div>
         </div>
       </article>
@@ -367,7 +393,7 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
             <p class="role">Migration lead · YouGov</p>
             <p class="summary">Led the migration of all YouGov employee data from legacy HR platforms to Greenhouse ATS. The source data had errors and corrupted records, so I owned mapping, cleansing and validation before cutover.</p>
             <p class="summary-short">Led mapping, cleansing and validation of all employee data before cutover.</p>
-            <dl class="prdl"><div><dt>Problem</dt><dd>Errors and corrupted source records</dd></div><div><dt>Decision</dt><dd>Map, cleanse and validate first</dd></div><div><dt>Result</dt><dd>Cutover completed with minimal defects</dd></div><div><dt>Learning</dt><dd>Surface data exceptions and owners early</dd></div></dl>
+            <dl class="prdl"><div><dt>Problem</dt><dd>Errors and corrupted source records</dd></div><div><dt>Decision</dt><dd>Map, cleanse and validate first</dd></div><div><dt>Result</dt><dd>Cutover completed with only a few minor defects</dd></div><div><dt>Learning</dt><dd>Surface data exceptions and owners early</dd></div></dl>
           </div>
         </div>
       </article>
@@ -384,11 +410,45 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
             <p class="role">Delivery support · YouGov</p>
             <p class="summary">Supported the migration of all YouGov employees from Greenhouse to Workday HCM across every market: data mapping, system configuration, UAT design and execution, and go-live support with HR, IT and business stakeholders.</p>
             <p class="summary-short">Supported configuration, UAT and go-live for all employees across every market.</p>
-            <dl class="prdl"><div><dt>Problem</dt><dd>Move all employees to a new HCM platform</dd></div><div><dt>Decision</dt><dd>Support configuration, UAT and readiness</dd></div><div><dt>Result</dt><dd>Delivered on time across all markets</dd></div><div><dt>Learning</dt><dd>Plan market UAT and sign-off early</dd></div></dl>
+            <dl class="prdl"><div><dt>Problem</dt><dd>Company switch from Greenhouse to Workday</dd></div><div><dt>Decision</dt><dd>Support configuration, UAT and readiness</dd></div><div><dt>Result</dt><dd>Delivered on time across all markets</dd></div><div><dt>Learning</dt><dd>Plan market UAT and sign-off early</dd></div></dl>
           </div>
         </div>
       </article>
     </div>
+  </div>
+</section>
+
+<section class="section" id="sample">
+  <div class="wrap">
+    <header>
+      <h2 class="title">Sample work</h2>
+      <p class="section-note">My company projects are internal, so this is a small public project you can read and run. It uses synthetic data only, and it makes no claim about any workplace result.</p>
+    </header>
+    <article class="sample-card">
+      <div class="sample-side">
+        <p class="sample-tag">Personal project · public on GitHub</p>
+        <h3>Multi-team report consolidation</h3>
+        <p class="sample-tools"><span>Built with</span>Python, pandas, SQL, pytest</p>
+        <ol class="steps" aria-label="Pipeline steps">
+          <li>4 team files, 4 formats</li>
+          <li>Map to one schema</li>
+          <li>Validate, clean and log every change</li>
+          <li>One report and weekly KPIs</li>
+        </ol>
+      </div>
+      <div class="sample-main">
+        <p>Four teams send the same weekly progress report in different formats: different column names, date formats, delimiters and status wording. The pipeline maps each file to one schema, drops or flags bad rows, and records every decision in a validation log, then writes one consolidated report and a weekly summary.</p>
+        <ul class="sample-list">
+          <li><b>Python:</b> per-team configuration, loud failure when a template changes, and 12 passing tests.</li>
+          <li><b>SQL:</b> three queries in portable SQL (tested on SQLite) using CTEs, <code>LAG</code>, <code>ROW_NUMBER</code> and <code>RANK</code>.</li>
+          <li><b>Outputs:</b> consolidated CSV and Excel workbook, weekly summary, and a validation log with source row numbers.</li>
+        </ul>
+        <div class="sample-actions">
+          <a class="btn solid" href="https://github.com/prathamesh-77/reporting-automation-sample" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+          <a class="btn" href="https://github.com/prathamesh-77/reporting-automation-sample/blob/main/sql/weekly_kpis.sql" target="_blank" rel="noopener noreferrer">Read the SQL</a>
+        </div>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -406,7 +466,7 @@ h2.title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,6
         <a class="btn" id="resumeFooter" href="#">Resume</a>
       </div>
     </div>
-    <div class="foot"><span>Prathamesh Dodia · Mumbai, India</span><span>Project figures describe my own contributions at YouGov.</span></div>
+    <div class="foot"><span>Prathamesh Dodia · Mumbai, India</span><span>Descriptions reflect my role on each project.</span></div>
   </div>
 </section>
 </main>
